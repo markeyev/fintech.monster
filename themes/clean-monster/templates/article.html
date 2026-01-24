@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}{{ article.title }} | {{ SITENAME }}{% endblock %}
+
+{% block content %}
+<article>
+    <!-- Article Header -->
+    <header class="container mx-auto px-4 lg:px-8 py-12 md:py-20 max-w-4xl text-center">
+        <div class="mb-6 flex justify-center items-center gap-3">
+            <a href="{{ SITEURL }}/category/{{ article.category.slug }}.html"
+                class="text-sm font-bold text-accent-blue uppercase tracking-widest hover:underline">
+                {{ article.category }}
+            </a>
+            <span class="text-gray-300">/</span>
+            <time datetime="{{ article.date }}" class="text-sm text-gray-500 font-mono uppercase">
+                {{ article.locale_date }}
+            </time>
+        </div>
+
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-8 text-black">
+            {{ article.title }}
+        </h1>
+
+        <div class="flex justify-center items-center gap-2 text-sm font-medium text-gray-600">
+            <span>By <a href="{{ SITEURL }}/author/{{ article.author.slug }}.html" class="underline hover:text-black">{{
+                    article.author }}</a></span>
+        </div>
+    </header>
+
+    <!-- Main Image -->
+    {% if article.image %}
+    <div class="container mx-auto px-4 lg:px-8 mb-16 max-w-5xl">
+        <div class="aspect-video bg-gray-100 overflow-hidden">
+            <img src="{{ SITEURL }}/{{ article.image }}" alt="{{ article.title }}" class="w-full h-full object-cover">
+        </div>
+        {% if article.image_caption %}
+        <p class="text-center text-sm text-gray-500 mt-3 italic">{{ article.image_caption }}</p>
+        {% endif %}
+    </div>
+    {% endif %}
+
+    <!-- Article Body -->
+    <div class="container mx-auto px-4 lg:px-8 mb-24">
+        <div class="prose prose-lg prose-slate mx-auto max-w-2xl font-serif">
+            {{ article.content }}
+        </div>
+
+        {% if article.tags %}
+        <div class="max-w-2xl mx-auto mt-12 pt-8 border-t border-gray-200">
+            <div class="flex flex-wrap gap-2 text-sm font-medium text-gray-600">
+                <span class="uppercase tracking-widest text-xs text-gray-400 mr-2">Tags:</span>
+                {% for tag in article.tags %}
+                <a href="{{ SITEURL }}/{{ tag.url }}" class="hover:text-black hover:underline">#{{ tag }}</a>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Author Bio (E-E-A-T) -->
+        <div class="max-w-2xl mx-auto mt-16 pt-8 border-t border-gray-200">
+            <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">About the Author</h3>
+            <div class="bg-gray-50 p-6 rounded-lg flex gap-4 items-start">
+                <div
+                    class="w-12 h-12 bg-gray-200 rounded-full flex-shrink-0 flex items-center justify-center font-bold text-gray-500">
+                    {{ article.author.name|first }}
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-900 mb-1">
+                        <a href="{{ SITEURL }}/author/{{ article.author.slug }}.html" class="hover:underline">{{
+                            article.author }}</a>
+                    </h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        {% if AUTHOR_BIO and article.author.name in AUTHOR_BIO %}
+                        {{ AUTHOR_BIO[article.author.name] }}
+                        {% else %}
+                        Writer at Fintech Monster covering the intersection of finance and technology.
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+{% endblock %}

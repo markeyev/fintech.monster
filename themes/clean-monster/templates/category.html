@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}{{ category }} | {{ SITENAME }}{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 lg:px-8 py-12">
+    <div class="border-b border-gray-200 pb-8 mb-12">
+        <h1 class="text-4xl font-bold uppercase tracking-tight">{{ category }}</h1>
+        <p class="text-gray-500 mt-2">Latest coverage from {{ category }}</p>
+    </div>
+
+    <!-- Articles Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+        {% for article in articles %}
+        <article class="flex flex-col group">
+            <div class="aspect-video bg-gray-100 mb-4 overflow-hidden relative">
+                {% if article.image %}
+                <a href="{{ SITEURL }}/{{ article.url }}">
+                    <img src="{{ SITEURL }}/{{ article.image }}" alt="{{ article.title }}"
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                </a>
+                {% else %}
+                <div class="w-full h-full flex items-center justify-center bg-gray-50 text-gray-200">
+                    <span class="text-xl font-bold">F.M</span>
+                </div>
+                {% endif %}
+            </div>
+            <div class="mb-2">
+                <span class="text-xs font-bold text-accent-blue uppercase tracking-wider">
+                    {{ article.category }}
+                </span>
+            </div>
+            <h4 class="text-xl font-bold leading-tight mb-3">
+                <a href="{{ SITEURL }}/{{ article.url }}" class="group-hover:text-gray-600 transition-colors">
+                    {{ article.title }}
+                </a>
+            </h4>
+            <div class="text-gray-500 text-sm leading-relaxed line-clamp-3 mb-4 flex-grow">
+                {{ article.summary|striptags }}
+            </div>
+            <div class="text-xs text-gray-400 font-mono mt-auto">
+                {{ article.locale_date }}
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+
+    <!-- Pagination -->
+    {% if articles_page and articles_page.has_other_pages() %}
+    <div class="flex justify-center mt-16 gap-4">
+        {% if articles_page.has_previous() %}
+        <a href="{{ SITEURL }}/{{ articles_page.previous_page.url }}"
+            class="px-4 py-2 border border-gray-300 text-gray-600 hover:bg-black hover:text-white transition uppercase text-sm font-bold">Previous</a>
+        {% endif %}
+        {% if articles_page.has_next() %}
+        <a href="{{ SITEURL }}/{{ articles_page.next_page.url }}"
+            class="px-4 py-2 border border-gray-300 text-gray-600 hover:bg-black hover:text-white transition uppercase text-sm font-bold">Next</a>
+        {% endif %}
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}

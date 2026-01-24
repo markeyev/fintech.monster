@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mx-auto px-4 lg:px-8 py-12">
+
+    <!-- Hero / Featured Article -->
+    {% if articles %}
+    {% set featured_articles = articles | selectattr('featured') | list %}
+    {% if featured_articles %}
+    {% set featured = featured_articles[0] %}
+    {% else %}
+    {% set featured = articles[0] %}
+    {% endif %}
+    <section class="mb-16">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="order-2 md:order-1">
+                <div class="mb-4">
+                    <span class="bg-black text-white text-xs font-bold px-2 py-1 uppercase tracking-wider">Top
+                        Story</span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold leading-tight mb-4 tracking-tight">
+                    <a href="{{ SITEURL }}/{{ featured.url }}"
+                        class="hover:underline decoration-4 underline-offset-4 decoration-black/20 hover:decoration-black/80 transition-colors">
+                        {{ featured.title }}
+                    </a>
+                </h2>
+                <div class="text-lg text-gray-600 mb-6 line-clamp-3">
+                    {{ featured.summary|striptags }}
+                </div>
+                <div class="flex items-center text-sm text-gray-500 font-mono">
+                    <span class="capitalize mr-4">{{ featured.author }}</span>
+                    <time datetime="{{ featured.date }}">{{ featured.locale_date }}</time>
+                </div>
+            </div>
+
+            <div class="order-1 md:order-2 aspect-[4/3] bg-gray-100 overflow-hidden relative group">
+                {% if featured.image %}
+                <a href="{{ SITEURL }}/{{ featured.url }}">
+                    <img src="{{ SITEURL }}/{{ featured.image }}" alt="{{ featured.title }}"
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-700 ease-out">
+                </a>
+                {% else %}
+                <div class="w-full h-full flex items-center justify-center bg-gray-50 text-gray-300">
+                    <span class="text-4xl font-bold">FINTECH.MONSTER</span>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest News Grid -->
+    <div class="border-t border-gray-200 pt-12">
+        <h3 class="text-xl font-bold mb-8 flex items-center gap-2">
+            <span class="w-2 h-2 bg-black"></span> LATEST NEWS
+        </h3>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+            {% for article in articles[1:] %}
+            <article class="flex flex-col group">
+                <div class="aspect-video bg-gray-100 mb-4 overflow-hidden relative">
+                    {% if article.image %}
+                    <a href="{{ SITEURL }}/{{ article.url }}">
+                        <img src="{{ SITEURL }}/{{ article.image }}" alt="{{ article.title }}"
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </a>
+                    {% else %}
+                    <div class="w-full h-full flex items-center justify-center bg-gray-50 text-gray-200">
+                        <span class="text-xl font-bold">F.M</span>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="mb-2">
+                    <a href="{{ SITEURL }}/category/{{ article.category.slug }}.html"
+                        class="text-xs font-bold text-accent-blue uppercase tracking-wider hover:underline">
+                        {{ article.category }}
+                    </a>
+                </div>
+                <h4 class="text-xl font-bold leading-tight mb-3">
+                    <a href="{{ SITEURL }}/{{ article.url }}" class="group-hover:text-gray-600 transition-colors">
+                        {{ article.title }}
+                    </a>
+                </h4>
+                <div class="text-gray-500 text-sm leading-relaxed line-clamp-3 mb-4 flex-grow">
+                    {{ article.summary|striptags }}
+                </div>
+                <div class="text-xs text-gray-400 font-mono mt-auto">
+                    {{ article.locale_date }}
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}

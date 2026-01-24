@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="{{ DEFAULT_LANG }}">
+
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PM78CBZM');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
+
+    <link rel="shortcut icon" href="{{ SITEURL }}/favicon.ico">
+    <link rel="icon" href="{{ SITEURL }}/favicon.ico">
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Google Discover & SEO -->
+    <meta name="robots" content="max-image-preview:large" />
+
+    <!-- Open Graph & Twitter -->
+    <meta property="og:site_name" content="{{ SITENAME }}" />
+    {% if article %}
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="{{ article.title }}" />
+    <meta property="og:url" content="{{ SITEURL }}/{{ article.url }}" />
+    <meta property="og:description" content="{{ article.summary|striptags }}" />
+    <meta property="article:published_time" content="{{ article.date }}" />
+    {% if article.image %}
+    <meta property="og:image" content="{{ SITEURL }}/{{ article.image }}" />
+    <meta name="twitter:image" content="{{ SITEURL }}/{{ article.image }}" />
+    {% endif %}
+    {% else %}
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{{ SITENAME }}" />
+    <meta property="og:url" content="{{ SITEURL }}" />
+    <meta property="og:description" content="Breaking Fintech News, Market Data, and Corporate Gossip." />
+    {% endif %}
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ SITENAME }}" />
+
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'fintech-black': '#111111',
+                        'fintech-gray': '#444444',
+                        'fintech-light': '#f3f4f6',
+                        'accent-blue': '#0055ff',
+                        'accent-red': '#ff3b30',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #111111;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .animate-marquee {
+            animation: marquee 30s linear infinite;
+        }
+    </style>
+
+    {% if GOOGLE_ADSENSE_ID %}
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ GOOGLE_ADSENSE_ID }}"
+        crossorigin="anonymous"></script>
+    {% endif %}
+</head>
+
+<body class="flex flex-col min-h-screen bg-white text-gray-900 antialiased">
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PM78CBZM" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+
+    <!-- Top Ticker -->
+    <div class="bg-gray-100 border-b border-gray-200 py-1 overflow-hidden h-8 flex items-center">
+        <div class="whitespace-nowrap animate-marquee flex gap-8 text-xs font-medium text-gray-600">
+            {% if MARKET_TICKER %}
+            {% for symbol, price, change, color in MARKET_TICKER %}
+            <span class="flex items-center gap-1">
+                <span class="font-bold text-gray-900">{{ symbol }}</span>
+                {% if '+' in change %}
+                <span class="text-green-600">{{ price }} [{{ change }}]</span>
+                {% elif '-' in change %}
+                <span class="text-red-600">{{ price }} [{{ change }}]</span>
+                {% else %}
+                <span class="text-gray-500">{{ price }} [{{ change }}]</span>
+                {% endif %}
+            </span>
+            {% endfor %}
+            <!-- Duplicate for infinite scroll -->
+            {% for symbol, price, change, color in MARKET_TICKER %}
+            <span class="flex items-center gap-1">
+                <span class="font-bold text-gray-900">{{ symbol }}</span>
+                {% if '+' in change %}
+                <span class="text-green-600">{{ price }} [{{ change }}]</span>
+                {% elif '-' in change %}
+                <span class="text-red-600">{{ price }} [{{ change }}]</span>
+                {% else %}
+                <span class="text-gray-500">{{ price }} [{{ change }}]</span>
+                {% endif %}
+            </span>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="border-b border-gray-200 bg-white sticky top-0 z-50">
+        <div class="container mx-auto px-4 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="{{ SITEURL }}/" class="text-2xl font-bold tracking-tight text-black hover:opacity-80 transition">
+                FINTECH.MONSTER
+            </a>
+
+            <!-- Nav -->
+            <nav class="hidden md:flex items-center gap-8">
+                {% if categories %}
+                {% for cat, null in categories %}
+                <a href="{{ SITEURL }}/{{ cat.url }}"
+                    class="text-sm font-semibold uppercase tracking-wide text-gray-600 hover:text-black transition {{ 'text-black' if category == cat else '' }}">
+                    {{ cat }}
+                </a>
+                {% endfor %}
+                {% endif %}
+                <span class="text-gray-300">|</span>
+                <span class="text-xs font-mono text-gray-500">MARKETS ONLINE</span>
+            </nav>
+
+            <!-- Mobile Menu Button (Placeholder) -->
+            <button class="md:hidden text-gray-900">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 border-t border-gray-200 mt-20 py-12">
+        <div class="container mx-auto px-4 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left">
+                <h4 class="font-bold text-lg mb-2">FINTECH.MONSTER</h4>
+                <p class="text-sm text-gray-500">© 2025 Fintech Monster. All rights reserved.</p>
+            </div>
+            <div class="flex gap-6 text-sm font-medium text-gray-600">
+                <a href="#" class="hover:text-black">Privacy</a>
+                <a href="#" class="hover:text-black">Terms</a>
+                <a href="#" class="hover:text-black">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

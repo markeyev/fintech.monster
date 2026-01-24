@@ -1,0 +1,25 @@
+# Pelican
+output/
+cache/
+*.pyc
+__pycache__/
+pelicanconf.pyc
+
+# Environment
+.venv/
+venv/
+ENV/
+env/
+dist/
+build/
+*.egg-info/
+
+# System
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
