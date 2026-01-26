@@ -43,10 +43,6 @@ publish: ## generate using production settings
 
 deploy: publish ## build and deploy to Google Cloud Storage
 	gcloud --project $(PROJECT_ID) storage rsync -r --delete-unmatched-destination-objects $(OUTPUTDIR) gs://$(BUCKET)
-	# Set HTML to revalidate every time
-	gcloud --project $(PROJECT_ID) storage objects update gs://$(BUCKET)/**/*.html --cache-control="public, no-cache, proxy-revalidate"
-	# Set assets to cache for 1 hour (ignore errors if no assets found)
-	-gcloud --project $(PROJECT_ID) storage objects update gs://$(BUCKET)/theme/** gs://$(BUCKET)/images/** --cache-control="public, max-age=3600" 2>/dev/null || true
 
 nocache: ## set zero cache for everything (debug only)
 	gcloud --project $(PROJECT_ID) storage objects update gs://$(BUCKET)/** --cache-control="public, max-age=0, no-store"

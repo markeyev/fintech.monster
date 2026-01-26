@@ -3,14 +3,24 @@
 
 <head>
     <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-PM78CBZM');</script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+
+        // Check for consent from localStorage
+        const hasConsent = localStorage.getItem('cookie-consent') === 'accepted';
+
+        if (hasConsent) {
+            (function (w, d, s, l, i) {
+                w[l] = w[l] || []; w[l].push({
+                    'gtm.start':
+                        new Date().getTime(), event: 'gtm.js'
+                }); var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-PM78CBZM');
+        }
+    </script>
     <!-- End Google Tag Manager -->
 
     <!-- Google tag (gtag.js) -->
@@ -103,9 +113,17 @@
     </style>
 
     {% if GOOGLE_ADSENSE_ID %}
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ GOOGLE_ADSENSE_ID }}"
-        crossorigin="anonymous"></script>
+    <script>
+        if (localStorage.getItem('cookie-consent') === 'accepted') {
+            const script = document.createElement('script');
+            script.async = true;
+            script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ GOOGLE_ADSENSE_ID }}";
+            script.crossOrigin = "anonymous";
+            document.head.appendChild(script);
+        }
+    </script>
     {% endif %}
+    <script src="{{ SITEURL }}/theme/js/consent.js"></script>
 </head>
 
 <body class="flex flex-col min-h-screen bg-white text-gray-900 antialiased">
@@ -162,12 +180,30 @@
                 <p class="text-sm text-gray-500">© 2025 Fintech Monster. All rights reserved.</p>
             </div>
             <div class="flex gap-6 text-sm font-medium text-gray-600">
-                <a href="#" class="hover:text-black">Privacy</a>
-                <a href="#" class="hover:text-black">Terms</a>
-                <a href="#" class="hover:text-black">Contact</a>
+                <a href="{{ SITEURL }}/pages/privacy.html" class="hover:text-black">Privacy</a>
+                <a href="{{ SITEURL }}/pages/terms.html" class="hover:text-black">Terms</a>
+                <a href="{{ SITEURL }}/pages/contact.html" class="hover:text-black">Contact</a>
             </div>
         </div>
     </footer>
+
+    <!-- Cookie Banner -->
+    <div id="cookie-banner"
+        class="fixed bottom-0 left-0 right-0 bg-black text-white p-4 z-[100] hidden border-t border-gray-800">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="text-sm">
+                <p>We use cookies to analyze traffic and improve your experience. See our <a
+                        href="{{ SITEURL }}/pages/privacy.html" class="underline hover:text-gray-300">Privacy
+                        Policy</a>.</p>
+            </div>
+            <div class="flex gap-4">
+                <button id="decline-cookies"
+                    class="px-6 py-2 border border-gray-600 hover:border-white transition-colors text-xs font-bold uppercase tracking-widest">Decline</button>
+                <button id="accept-cookies"
+                    class="px-6 py-2 bg-white text-black hover:bg-gray-200 transition-colors text-xs font-bold uppercase tracking-widest">Accept</button>
+            </div>
+        </div>
+    </div>
 
 </body>
 
