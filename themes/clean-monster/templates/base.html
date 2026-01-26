@@ -51,8 +51,8 @@
     <meta name="twitter:title" content="{{ SITENAME }}" />
 
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS with Typography Plugin -->
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -106,39 +106,6 @@
             style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-
-    <!-- Top Ticker -->
-    <div class="bg-gray-100 border-b border-gray-200 py-1 overflow-hidden h-8 flex items-center">
-        <div class="whitespace-nowrap animate-marquee flex gap-8 text-xs font-medium text-gray-600">
-            {% if MARKET_TICKER %}
-            {% for symbol, price, change, color in MARKET_TICKER %}
-            <span class="flex items-center gap-1">
-                <span class="font-bold text-gray-900">{{ symbol }}</span>
-                {% if '+' in change %}
-                <span class="text-green-600">{{ price }} [{{ change }}]</span>
-                {% elif '-' in change %}
-                <span class="text-red-600">{{ price }} [{{ change }}]</span>
-                {% else %}
-                <span class="text-gray-500">{{ price }} [{{ change }}]</span>
-                {% endif %}
-            </span>
-            {% endfor %}
-            <!-- Duplicate for infinite scroll -->
-            {% for symbol, price, change, color in MARKET_TICKER %}
-            <span class="flex items-center gap-1">
-                <span class="font-bold text-gray-900">{{ symbol }}</span>
-                {% if '+' in change %}
-                <span class="text-green-600">{{ price }} [{{ change }}]</span>
-                {% elif '-' in change %}
-                <span class="text-red-600">{{ price }} [{{ change }}]</span>
-                {% else %}
-                <span class="text-gray-500">{{ price }} [{{ change }}]</span>
-                {% endif %}
-            </span>
-            {% endfor %}
-            {% endif %}
-        </div>
-    </div>
 
     <!-- Header -->
     <header class="border-b border-gray-200 bg-white sticky top-0 z-50">

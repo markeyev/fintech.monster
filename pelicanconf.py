@@ -72,7 +72,7 @@ MARKET_TICKER = [
 ]
 
 # AdSense (Replace with real ID)
-GOOGLE_ADSENSE_ID = 'ca-pub-XXXXXXXXXXXXXXXX' # Placeholder
+# GOOGLE_ADSENSE_ID = 'ca-pub-XXXXXXXXXXXXXXXX' # Placeholder
 
 # Author Bios for E-E-A-T
 AUTHOR_BIO = {
