@@ -4,77 +4,32 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>404 - Not Found | Fintech Monster</title>
+    <title>404 - Page Not Found | Fintech Monster</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        :root {
-            --cyber-black: #0a0a0c;
-            --cyber-green: #00ff9f;
-            --cyber-dim: #8892b0;
-        }
-
         body {
-            background-color: var(--cyber-black);
-            color: white;
             font-family: 'Inter', sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            text-align: center;
-            overflow: hidden;
-        }
-
-        .container {
-            border: 1px solid rgba(0, 255, 159, 0.2);
-            padding: 3rem;
-            background: rgba(255, 255, 255, 0.02);
-            box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
-            max-width: 500px;
-        }
-
-        h1 {
-            font-size: 5rem;
-            margin: 0;
-            color: var(--cyber-green);
-            text-shadow: 0 0 10px rgba(0, 255, 159, 0.5);
-        }
-
-        p {
-            color: var(--cyber-dim);
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-
-        a {
-            color: var(--cyber-green);
-            text-decoration: none;
-            border: 1px solid var(--cyber-green);
-            padding: 0.5rem 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        a:hover {
-            background: var(--cyber-green);
-            color: var(--cyber-black);
-            box-shadow: 0 0 20px var(--cyber-green);
-        }
-
-        .glitch-text {
-            position: relative;
-            display: inline-block;
         }
     </style>
 </head>
 
-<body>
-    <div class="container">
-        <div class="glitch-text">
-            <h1>404</h1>
+<body class="bg-white text-gray-900 flex items-center justify-center min-h-screen p-4">
+    <div class="max-w-md w-full text-center">
+        <div class="mb-8">
+            <span class="text-9xl font-bold tracking-tighter text-black opacity-10">404</span>
         </div>
-        <p>DATA BREACH? NO, JUST A MISSING LINK.</p>
-        <p style="font-size: 1rem; opacity: 0.7;">The requested object does not exist in our secure archives.</p>
-        <a href="/">RETURN TO DASHBOARD</a>
+        <h1 class="text-4xl font-bold text-black mb-4">LOST IN THE STACK</h1>
+        <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+            The page you're looking for has been moved, deleted, or never existed in the first place.
+        </p>
+        <a href="/"
+            class="inline-block bg-black text-white px-8 py-3 font-bold uppercase tracking-widest hover:bg-gray-800 transition-colors">
+            Return Home
+        </a>
     </div>
 </body>
 
