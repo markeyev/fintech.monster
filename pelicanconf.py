@@ -7,6 +7,7 @@ STATIC_PATHS = ['images']
 EXTRA_PATH_METADATA = {
     'images/favicon.ico': {'path': 'favicon.ico'},
     'images/404.html': {'path': '404.html'},
+    'images/robots.txt': {'path': 'robots.txt'},
 }
 
 TIMEZONE = 'Europe/Berlin'

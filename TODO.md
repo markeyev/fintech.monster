@@ -7,12 +7,12 @@
     - API Endpoint: `GET /api/v1/press_releases.json`
 
 ## Deployment
-- [ ] Deploy static website to Google Cloud Storage
+- [X] Deploy static website to Google Cloud Storage
     - Reference: [Hosting a static website](https://docs.cloud.google.com/storage/docs/hosting-static-website)
 
 ## SEO
-- [ ] Add sitemap.xml
-- [ ] Add robots.txt
+- [X] Add sitemap.xml
+- [X] Add robots.txt
 - [ ] Create Facebook Page
 - [ ] Create Twitter Account
 - [ ] Create LinkedIn Page
