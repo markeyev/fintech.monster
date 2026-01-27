@@ -9,3 +9,15 @@
 ## Deployment
 - [ ] Deploy static website to Google Cloud Storage
     - Reference: [Hosting a static website](https://docs.cloud.google.com/storage/docs/hosting-static-website)
+
+## SEO
+- [ ] Add sitemap.xml
+- [ ] Add robots.txt
+- [ ] Create Facebook Page
+- [ ] Create Twitter Account
+- [ ] Create LinkedIn Page
+- [ ] Create YouTube Channel
+- [ ] Create Instagram Account
+- [ ] Create TikTok Account
+- [ ] Create X.com Account
+- [ ] Create Telegram Channel
