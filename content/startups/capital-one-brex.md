@@ -1,9 +1,9 @@
-Title: Capital One Agrees to Buy Brex for $5.15 Billion in Strategic Business Payments Push
+Title: Capital One to Acquire Brex for $5.15B in Business Payments Push
 Date: 2026-01-27
 Category: Startups
 Image: images/capitalonebrex.png
 Tags: Capital One, Brex, Acquisition, Fintech, M&A, Payments
-Summary: Capital One has agreed to acquire Brex for $5.15 billion, marking a major consolidation in the business payments space and reflecting a recalibration of fintech valuations.
+Summary: Capital One acquires Brex for $5.15B, marking a major consolidation in business payments and reflecting a recalibration of fintech valuations.
 
 Capital One Financial Corporation has agreed to acquire fintech firm Brex Inc. in a transaction valued at approximately $5.15 billion, combining cash and stock. The deal reflects a broader recalibration in fintech valuations and positions the U.S. bank to deepen its footprint in business payments and spend management.
 

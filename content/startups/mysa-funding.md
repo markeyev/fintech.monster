@@ -1,9 +1,9 @@
-Title: Mysa Secures $3.4M in Pre‑Series A Funding to Deepen AI‑Powered Finance Platform for Mid‑Sized Businesses
+Title: Mysa Raises $3.4M Pre-Series A for AI Finance Platform in India
 Date: 2026-01-27
 Category: Startups
 Image: images/mysa.png
 Tags: Mysa, Funding, AI, Fintech, India, B2B
-Summary: Bengaluru‑headquartered Mysa raises $3.4 million in a Pre‑Series A funding round co‑led by Blume Ventures and Piper Serica to scale its AI-powered finance operations for Indian mid-sized businesses.
+Summary: Bengaluru‑headquartered Mysa raises $3.4 million in a Pre‑Series A round co‑led by Blume Ventures and Piper Serica to scale AI-powered finance operations.
 
 Bengaluru‑headquartered fintech startup Mysa, a business‑to‑business platform that automates financial operations for mid‑sized companies, has raised $3.4 million in a Pre‑Series A funding round co‑led by Blume Ventures (an India‑focused early‑stage venture capital firm) and Piper Serica (an investment firm concentrating on financial services) with participation from Ikemori Ventures, Raise Financial Services, and QED Innovation Labs, alongside existing investors Antler, IIMA Ventures, and Neon Fund. This round brings Mysa’s total capital raised to approximately $6.2 million.  
 
