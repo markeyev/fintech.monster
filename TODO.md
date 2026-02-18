@@ -6,10 +6,6 @@
     - API Documentation: `https://www.justice.gov/developer/api-documentation/api_v1`
     - API Endpoint: `GET /api/v1/press_releases.json`
 
-## Deployment
-- [X] Deploy static website to Google Cloud Storage
-    - Reference: [Hosting a static website](https://docs.cloud.google.com/storage/docs/hosting-static-website)
-
 ## SEO
 - [X] Add sitemap.xml
 - [X] Add robots.txt
