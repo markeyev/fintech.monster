@@ -11,7 +11,7 @@
 
     <!-- Articles Grid -->
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
-        {% for article in articles %}
+        {% for article in (articles_page.object_list if articles_page else articles) %}
         <article class="flex flex-col group">
             <div class="aspect-video bg-gray-100 mb-4 overflow-hidden relative">
                 {% if article.image %}
@@ -49,11 +49,11 @@
     {% if articles_page and articles_page.has_other_pages() %}
     <div class="flex justify-center mt-16 gap-4">
         {% if articles_page.has_previous() %}
-        <a href="{{ SITEURL }}/{{ articles_page.previous_page.url }}"
+        <a href="{{ SITEURL }}/{{ articles_previous_page.url }}"
             class="px-4 py-2 border border-gray-300 text-gray-600 hover:bg-black hover:text-white transition uppercase text-sm font-bold">Previous</a>
         {% endif %}
         {% if articles_page.has_next() %}
-        <a href="{{ SITEURL }}/{{ articles_page.next_page.url }}"
+        <a href="{{ SITEURL }}/{{ articles_next_page.url }}"
             class="px-4 py-2 border border-gray-300 text-gray-600 hover:bg-black hover:text-white transition uppercase text-sm font-bold">Next</a>
         {% endif %}
     </div>

@@ -60,7 +60,7 @@ LINKS = (('Pelican', 'https://getpelican.com/'),
 SOCIAL = (('Twitter', '#'),
           ('LinkedIn', '#'),)
 
-DEFAULT_PAGINATION = 10
+DEFAULT_PAGINATION = 12
 
 # Dynamic Features
 MARKET_TICKER = [
