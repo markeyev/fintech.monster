@@ -6,10 +6,17 @@
 <div class="container mx-auto px-4 lg:px-8 py-12">
     <!-- Author Header / Bio -->
     <div class="border-b border-gray-200 pb-12 mb-12 text-center max-w-3xl mx-auto">
+        {% if AUTHOR_IMAGES and author.name in AUTHOR_IMAGES %}
+        <div class="w-24 h-24 mx-auto mb-6 overflow-hidden rounded-full border border-gray-200">
+            <img src="{{ SITEURL }}/{{ AUTHOR_IMAGES[author.name] }}" alt="{{ author }}"
+                class="w-full h-full object-cover">
+        </div>
+        {% else %}
         <div
             class="w-24 h-24 bg-gray-200 rounded-full mx-auto flex items-center justify-center font-bold text-3xl text-gray-500 mb-6">
             {{ author.name|first }}
         </div>
+        {% endif %}
         <h1 class="text-4xl font-bold uppercase tracking-tight mb-4">{{ author }}</h1>
         <p class="text-gray-600 text-lg leading-relaxed">
             {% if AUTHOR_BIO and author.name in AUTHOR_BIO %}

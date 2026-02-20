@@ -75,10 +75,14 @@ MARKET_TICKER = [
 # AdSense (Replace with real ID)
 # GOOGLE_ADSENSE_ID = 'ca-pub-XXXXXXXXXXXXXXXX' # Placeholder
 
-# Author Bios for E-E-A-T
+# Author Bios and Images for E-E-A-T
 AUTHOR_BIO = {
-    "Fintech Monster Editorial": "The Fintech Monster Editorial Board is comprised of veteran financial journalists and crypto analysts dedicated to uncovering the truth behind the market's biggest moves. We prioritize facts, data, and institutional-grade analysis.",
+    "Fintech Monster": "The Fintech Monster Editorial Board is comprised of veteran financial journalists and crypto analysts dedicated to uncovering the truth behind the market's biggest moves. We prioritize facts, data, and institutional-grade analysis.",
     "Bot": "Automated market data reporter.",
+}
+
+AUTHOR_IMAGES = {
+    "Fintech Monster": "favicon.ico",
 }
 
 # Uncomment following line if you want document-relative URLs when developing
